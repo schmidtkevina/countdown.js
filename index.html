@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>countdown.js</title>
+
+<script src="js/countdown.js"></script>
+<link rel="stylesheet" type="text/css" href="css/countdown.css" />  
+    
+
+</head>
+
+<body onload="setupCountdown()">
+    
+    
+    
+   
+    
+    <div id="controls" class="countdown-control-buttons">
+        [ <a href="#" onclick="startCountdown()">START</a> | <a href="#" onclick="pauseCountdown()">PAUSE</a>]
+    </div>
+    
+    
+    <div id="countdown" class="countdown"></div>
+    
+    
+    
+</body>
+    
+<script type="text/javascript">
+    
+    
+    
+    function setupCountdown(){
+        
+        this.countdown = new Countdown(2,45,0);
+        this.countdownDiv = document.getElementById('countdown');
+        
+        this.countdownDiv.innerHTML = this.countdown.getHours() + ":" + this.countdown.getMinutes() + ":" + this.countdown.getSeconds();
+       
+        
+    }
+    
+    
+    
+    
+    function intervalCountdown(){
+        
+        this.countdown.count();
+        this.countdownDiv.innerHTML = this.countdown.getHours() + ":" + this.countdown.getMinutes() + ":" + this.countdown.getSeconds();
+        
+        if (this.countdown.getSecondsRemaining() == -1)
+        {
+            clearInterval(this.countdownInterval);
+            
+        }
+        
+    }
+    
+    function startCountdown()
+    {
+          this.countdownInterval = setInterval(intervalCountdown, 1000);
+    }
+    
+    function pauseCountdown()
+    {
+        clearInterval(this.countdownInterval);
+    }
+    
+</script>	    
+    
+    
+    
+    
+
+</html>
+
